@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-todo-table',
   templateUrl: './todo-table.component.html',
   styleUrls: ['./todo-table.component.scss'],
 })
 export class TodoTableComponent implements OnInit {
-  todos: object[];
+  todos: Array<any>;
   additionalToDo: any;
   toDoTitle: string;
-  toDoId: number;
+  toDoId: any;
   constructor() {}
   ngOnInit(): void {
     this.toDoTitle = '';
@@ -48,8 +47,18 @@ export class TodoTableComponent implements OnInit {
       },
     ];
   }
-  public removeToDo() {
+  public deleteToDo(selected: number): void {
+    console.log(selected);
     console.log(this.todos);
+    console.log(this.todos[0].id);
+    console.log(
+      this.todos.filter((todo) => {
+        return todo.id !== selected;
+      })
+    );
+    this.todos = this.todos.filter((todo) => {
+      return todo.id !== selected;
+    });
   }
   public addToDo(): void {
     this.todos.push({

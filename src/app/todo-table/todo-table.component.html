@@ -1,7 +1,10 @@
 <h1>The To Do List</h1>
 
 <div class="to-do-item" *ngFor="let todo of todos">
-  <p>{{ todo.title }} <span>edit</span></p>
+  <p>
+    {{ todo.title }} <button>edit</button
+    ><button (click)="deleteToDo(todo.id)">delete</button>
+  </p>
 </div>
 <span>Add Item</span>
 
@@ -11,4 +14,3 @@
   [(ngModel)]="toDoTitle"
   (keyup.enter)="addToDo()"
 />
-<button (click)="removeToDo()">Remove</button>
