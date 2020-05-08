@@ -10,6 +10,7 @@ export class TodoTableComponent implements OnInit {
   additionalToDo: any;
   toDoTitle: string;
   toDoId: any;
+  errorMessage: string;
   constructor() {}
   ngOnInit(): void {
     this.toDoTitle = '';
@@ -53,17 +54,31 @@ export class TodoTableComponent implements OnInit {
     });
   }
   public addToDo(): void {
-    this.todos.push({
-      id: this.toDoId,
-      title: this.toDoTitle,
-      completed: false,
-      editing: false,
-    });
-    this.toDoTitle = '';
-    this.toDoId++;
-    console.log(this.todos);
+    if (this.toDoTitle === '') {
+      this.errorMessage = 'Please enter an item';
+    } else {
+      this.todos.push({
+        id: this.toDoId,
+        title: this.toDoTitle,
+        completed: false,
+        editing: false,
+      });
+      this.errorMessage = '';
+      this.toDoTitle = '';
+      this.toDoId++;
+    }
+    console.log(this.errorMessage);
   }
   public completeToDo(selected: any): void {
     selected.completed = !selected.completed;
+  }
+  public startEdit(selected: any): any {
+    selected.editing = true;
+  }
+  public updateToDo(selected: any): void {
+    console.log(this.todos);
+    selected.title = this.toDoTitle;
+    this.toDoTitle = '';
+    selected.editing = false;
   }
 }

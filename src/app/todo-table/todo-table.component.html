@@ -1,18 +1,36 @@
-<h1>The To Do List</h1>
-
-<div class="to-do-item" *ngFor="let todo of todos">
-  <p [ngClass]="todo.completed ? 'completed-todo' : 'incomplete-todo'">
-    {{ todo.title }} <button>Edit</button
-    ><button (click)="deleteToDo(todo.id)">Delete</button>
-    <button (click)="completeToDo(todo)">
-      {{ todo.completed ? "Undo" : "Done!" }}
-    </button>
-  </p>
+<div class="wrapper">
+  <div class="title">
+    <h1>The To Do List</h1>
+  </div>
+  <div class="app-wrapper">
+    <div class="app-content">
+      <div class="to-do-item" *ngFor="let todo of todos">
+        <p [ngClass]="todo.completed ? 'completed-todo' : 'incomplete-todo'">
+          {{ todo.title }}
+          <button (click)="completeToDo(todo)">
+            {{ todo.completed ? "Undo" : "Done!" }}</button
+          ><button (click)="deleteToDo(todo.id)">Delete</button
+          ><button (click)="startEdit(todo)">Edit</button
+          ><input
+            *ngIf="todo.editing"
+            type="string"
+            placeholder="Enter updated todo here"
+            [(ngModel)]="toDoTitle"
+            (keyup.enter)="updateToDo(todo)"
+          />
+        </p>
+      </div>
+      <input
+        type="string"
+        placeholder="Enter item here and hit enter to add"
+        [(ngModel)]="toDoTitle"
+        (keyup.enter)="addToDo()"
+        class="add-to-do-entry"
+      />
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+  <footer class="foot">
+    App By Cameron Blackwood - built using Angular and Typescript
+  </footer>
 </div>
-
-<input
-  type="string"
-  placeholder="Enter item here"
-  [(ngModel)]="toDoTitle"
-  (keyup.enter)="addToDo()"
-/>

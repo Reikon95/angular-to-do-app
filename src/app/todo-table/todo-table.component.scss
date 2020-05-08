@@ -1,6 +1,33 @@
+.wrapper {
+  min-height: 100vh;
+}
 .completed-todo {
   text-decoration: line-through;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .incomplete-todo {
   font-family: Arial, Helvetica, sans-serif;
+}
+.title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.app-wrapper {
+  text-align: center;
+}
+.app-content {
+  border: solid black 1px;
+  width: 50vw;
+  display: inline-block;
+  padding-bottom: 2vh;
+}
+.foot {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  text-align: center;
+}
+.add-to-do-entry {
+  width: 20vw;
 }
