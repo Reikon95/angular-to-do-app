@@ -4,6 +4,11 @@
   <p>{{ todo.title }} <span>edit</span></p>
 </div>
 <span>Add Item</span>
-<input type="string" placeholder="Enter item here"/>
-<button (click)="addToDo()">Add</button>
+
+<input
+  type="string"
+  placeholder="Enter item here"
+  [(ngModel)]="toDoTitle"
+  (keyup.enter)="addToDo()"
+/>
 <button (click)="removeToDo()">Remove</button>

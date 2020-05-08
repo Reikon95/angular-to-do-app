@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormBuilder } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-todo-table',
   templateUrl: './todo-table.component.html',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoTableComponent implements OnInit {
   todos: object[];
+  additionalToDo: any;
+  toDoTitle: string;
+  toDoId: number;
   constructor() {}
   ngOnInit(): void {
+    this.toDoTitle = '';
+    this.toDoId = 4;
     this.todos = [
       {
         id: 1,
@@ -47,10 +53,11 @@ export class TodoTableComponent implements OnInit {
   }
   public addToDo(): void {
     this.todos.push({
-      id: 6,
-      title: 'Adding extra worked',
+      id: this.toDoId,
+      title: this.toDoTitle,
       completed: false,
       editing: false,
     });
+    this.toDoTitle = '';
   }
 }
