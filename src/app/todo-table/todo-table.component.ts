@@ -13,7 +13,7 @@ export class TodoTableComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {
     this.toDoTitle = '';
-    this.toDoId = 4;
+    this.toDoId = 6;
     this.todos = [
       {
         id: 1,
@@ -48,14 +48,6 @@ export class TodoTableComponent implements OnInit {
     ];
   }
   public deleteToDo(selected: number): void {
-    console.log(selected);
-    console.log(this.todos);
-    console.log(this.todos[0].id);
-    console.log(
-      this.todos.filter((todo) => {
-        return todo.id !== selected;
-      })
-    );
     this.todos = this.todos.filter((todo) => {
       return todo.id !== selected;
     });
@@ -68,7 +60,10 @@ export class TodoTableComponent implements OnInit {
       editing: false,
     });
     this.toDoTitle = '';
+    this.toDoId++;
+    console.log(this.todos);
+  }
+  public completeToDo(selected: any): void {
+    selected.completed = !selected.completed;
   }
 }
-
-// comment

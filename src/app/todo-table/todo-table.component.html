@@ -1,12 +1,14 @@
 <h1>The To Do List</h1>
 
 <div class="to-do-item" *ngFor="let todo of todos">
-  <p>
-    {{ todo.title }} <button>edit</button
-    ><button (click)="deleteToDo(todo.id)">delete</button>
+  <p [ngClass]="todo.completed ? 'completed-todo' : 'incomplete-todo'">
+    {{ todo.title }} <button>Edit</button
+    ><button (click)="deleteToDo(todo.id)">Delete</button>
+    <button (click)="completeToDo(todo)">
+      {{ todo.completed ? "Undo" : "Done!" }}
+    </button>
   </p>
 </div>
-<span>Add Item</span>
 
 <input
   type="string"
