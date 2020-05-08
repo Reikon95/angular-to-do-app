@@ -1,3 +1,6 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Sarabun&display=swap");
+</style>
 <div class="wrapper">
   <div class="title">
     <h1>The To Do List</h1>
@@ -9,15 +12,7 @@
           {{ todo.title }}
           <button (click)="completeToDo(todo)">
             {{ todo.completed ? "Undo" : "Done!" }}</button
-          ><button (click)="deleteToDo(todo.id)">Delete</button
-          ><button (click)="startEdit(todo)">Edit</button
-          ><input
-            *ngIf="todo.editing"
-            type="string"
-            placeholder="Enter updated todo here"
-            [(ngModel)]="toDoTitle"
-            (keyup.enter)="updateToDo(todo)"
-          />
+          ><button (click)="deleteToDo(todo.id)">Delete</button>
         </p>
       </div>
       <input
@@ -27,7 +22,7 @@
         (keyup.enter)="addToDo()"
         class="add-to-do-entry"
       />
-      <p>{{ errorMessage }}</p>
+      <p class="error-message">{{ errorMessage }}</p>
     </div>
   </div>
   <footer class="foot">

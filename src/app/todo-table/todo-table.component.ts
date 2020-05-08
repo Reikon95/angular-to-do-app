@@ -55,7 +55,7 @@ export class TodoTableComponent implements OnInit {
   }
   public addToDo(): void {
     if (this.toDoTitle === '') {
-      this.errorMessage = 'Please enter an item';
+      this.errorMessage = 'Please enter some text';
     } else {
       this.todos.push({
         id: this.toDoId,
@@ -67,7 +67,6 @@ export class TodoTableComponent implements OnInit {
       this.toDoTitle = '';
       this.toDoId++;
     }
-    console.log(this.errorMessage);
   }
   public completeToDo(selected: any): void {
     selected.completed = !selected.completed;
@@ -76,9 +75,13 @@ export class TodoTableComponent implements OnInit {
     selected.editing = true;
   }
   public updateToDo(selected: any): void {
-    console.log(this.todos);
     selected.title = this.toDoTitle;
     this.toDoTitle = '';
     selected.editing = false;
+  }
+  public clearAllCompleted(): void {
+    this.todos = this.todos.filter((todo) => {
+      return !todo.completed;
+    });
   }
 }

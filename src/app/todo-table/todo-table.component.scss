@@ -1,16 +1,18 @@
+* {
+  font-family: "Sarabun", sans-serif;
+}
 .wrapper {
   min-height: 100vh;
+  background: linear-gradient(45deg, #bbdefb 0%, #311b92 100%);
 }
 .completed-todo {
   text-decoration: line-through;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .incomplete-todo {
-  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
 }
 .title {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .app-wrapper {
   text-align: center;
@@ -20,6 +22,7 @@
   width: 50vw;
   display: inline-block;
   padding-bottom: 2vh;
+  background-color: white;
 }
 .foot {
   position: absolute;
@@ -30,4 +33,7 @@
 }
 .add-to-do-entry {
   width: 20vw;
+}
+.error-message {
+  color: red;
 }
