@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 
-// set up template engine
+// set up template egine
 app.set("view engine", "ejs");
 
 app.use(express.static("./"));
