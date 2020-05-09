@@ -121,8 +121,12 @@
               "devServerTarget": "to-do-list-angular:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@zeit/ng-deploy:deploy"
         }
       }
-    }},
+    }
+  },
   "defaultProject": "to-do-list-angular"
 }
