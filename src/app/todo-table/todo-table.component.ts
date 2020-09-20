@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Store } from '@ngrx/store';
+import { newToDo } from '../store/actions';
 @Component({
   selector: 'app-todo-table',
   templateUrl: './todo-table.component.html',
@@ -11,7 +12,7 @@ export class TodoTableComponent implements OnInit {
   toDoTitle: string;
   toDoId: any;
   errorMessage: string;
-  constructor() {}
+  constructor(private store: Store<any>) {}
   ngOnInit(): void {
     this.toDoTitle = '';
     this.toDoId = 6;
@@ -83,5 +84,8 @@ export class TodoTableComponent implements OnInit {
     this.todos = this.todos.filter((todo) => {
       return !todo.completed;
     });
+  }
+  public submitToDo(todo): void {
+    this.store.dispatch(newToDo(todo));
   }
 }
