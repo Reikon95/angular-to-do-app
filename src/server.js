@@ -1,16 +1,11 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const path = require("path");
 
-// set up template egine
-app.set("view engine", "ejs");
+const app = express();
 
-app.use(express.static("./"));
+app.use(express.static(__dirname + "/dist"));
 
-//Listen to the port
-app.listen(process.env.PORT || 3000, function () {
-  console.log(
-    "Express server listening on port %d in %s mode",
-    this.address().port,
-    app.settings.env
-  );
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname + "/dist/index.html"));
 });
+app.listen(80);
