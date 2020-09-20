@@ -1,3 +1,11 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const newToDo = createAction('[Counter Component] new to do');
+export const newToDo = createAction(
+  '[TODO] new to do',
+  props<{ todo: string }>()
+);
+
+export const markComplete = createAction(
+  '[TODO] marked complete',
+  props<{ todo: string }>()
+);
